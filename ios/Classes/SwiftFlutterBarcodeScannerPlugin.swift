@@ -189,13 +189,16 @@ class BarcodeScannerViewController: UIViewController {
         return view
     }()
     
+    private bundle: Bundle {
+      Bundle(for: SwiftFlutterBarcodeScannerPlugin.self)
+    }
     /// Create and return flash button
     private lazy var flashIcon : UIButton! = {
         let flashButton = UIButton()
         flashButton.setTitle("Flash",for:.normal)
         flashButton.translatesAutoresizingMaskIntoConstraints=false
         
-        flashButton.setImage(UIImage(named: "ic_flash_off", in: Bundle(identifier: "org.cocoapods.flutter-barcode-scanner"), compatibleWith: nil),for:.normal)
+        flashButton.setImage(UIImage(named: "ic_flash_off", in: bundle, compatibleWith: nil),for:.normal)
         
         flashButton.addTarget(self, action: #selector(BarcodeScannerViewController.flashButtonClicked), for: .touchUpInside)
         return flashButton
@@ -366,10 +369,10 @@ class BarcodeScannerViewController: UIViewController {
     /// Flash button click event listener
     @IBAction private func flashButtonClicked() {
         if #available(iOS 10.0, *) {
-            if flashIcon.image(for: .normal) == UIImage(named: "ic_flash_off", in: Bundle(identifier: "org.cocoapods.flutter-barcode-scanner"), compatibleWith: nil){
-                flashIcon.setImage(UIImage(named: "ic_flash_on", in: Bundle(identifier: "org.cocoapods.flutter-barcode-scanner"), compatibleWith: nil),for:.normal)
+            if flashIcon.image(for: .normal) == UIImage(named: "ic_flash_off", in: bundle, compatibleWith: nil){
+                flashIcon.setImage(UIImage(named: "ic_flash_on", in: bundle, compatibleWith: nil),for:.normal)
             }else{
-                flashIcon.setImage(UIImage(named: "ic_flash_off", in: Bundle(identifier: "org.cocoapods.flutter-barcode-scanner"), compatibleWith: nil),for:.normal)
+                flashIcon.setImage(UIImage(named: "ic_flash_off", in: bundle, compatibleWith: nil),for:.normal)
             }
             toggleFlash()
         } else {
