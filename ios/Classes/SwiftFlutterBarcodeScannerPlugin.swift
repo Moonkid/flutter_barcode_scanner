@@ -189,7 +189,7 @@ class BarcodeScannerViewController: UIViewController {
         return view
     }()
     
-    private bundle: Bundle {
+    private var bundle: Bundle {
       Bundle(for: SwiftFlutterBarcodeScannerPlugin.self)
     }
     /// Create and return flash button
@@ -558,7 +558,7 @@ extension BarcodeScannerViewController{
             self.videoPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation.portraitUpsideDown
             break
         case .landscapeLeft:
-            self.videoPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation.landscapeRight
+            self.videoPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation.landscapeRightbu
             break
         case .landscapeRight:
             self.videoPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation.landscapeLeft
